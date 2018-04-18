@@ -22,6 +22,11 @@ test_data2 <- train_data[803:nrow(train_data),]
 fit <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
              data = train_data2,
              method = "class")
+
+# without age
+fit <- rpart(Survived ~ Pclass + Sex + SibSp + Parch + Fare + Embarked,
+             data = train_data2,
+             method = "class")
 rpart.plot(fit)
 
 Prediction <- predict(fit, test_data2, type = "class")
